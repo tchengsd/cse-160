@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Draw a point (1)</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <br><br>
+    <button type="button" id="green">Green</button>
+    <button type="button" id="red">Red</button>
+    <button type="button" id="clearButton">Clear Canvas</button>
+    <h4>Drawing Mode:</h4>
+    <button type="button" id="pointButton">Squares</button>
+    <button type="button" id="triangleButton">Triangles</button>
+    <button type="button" id="circleButton">Circles</button>
+
+    <h4>Shape Color:</h4>
+    <p>Red <input type="range" min="0" max="100" value="100" class="slider" id="redSlide"></p>
+    <p>Green <input type="range" min="0" max="100" value="0" class="slider" id="greenSlide"></p>
+    <p>Blue <input type="range" min="0" max="100" value="0" class="slider" id="blueSlide"></p>
+    <p>Opacity <input type="range" min="0" max="100" value="100" class="slider" id="alphaSlide"></p>
+    <h4>Other Settings:</h4>
+    <p>Size <input type="range" min="5" max="40" value="5" class="slider" id="sizeSlide"></p>
+    <p>(Circles) Segment Count <input type="range" min="5" max="25" value="5" class="slider" id="circleSlide"></p>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="asg1.js"></script>
+    <script src="Point.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+  
+
+</body></html>
