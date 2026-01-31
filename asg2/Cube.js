@@ -1,10 +1,7 @@
 class Cube {
-  constructor(segments) {
+  constructor(color) {
     this.type = 'cube';
-    //this.position = [0.0,0.0,0.0];
-    this.color = [1.0,1.0,1.0,1.0];
-    //this.size = 10.0;
-    //this.segments = segments;
+    this.color = color;
     this.matrix = new Matrix4();
   }
 

@@ -11,17 +11,27 @@
     </canvas>
     <p id="performance">dummy</p>
     <br><br>
-    <h4>Drawing Mode:</h4>
-    <button type="button" id="pointButton">Squares</button>
-    <button type="button" id="triangleButton">Triangles</button>
-    <button type="button" id="circleButton">Circles</button>
+    <h4>Color:</h4>
+    <button type="button" id="bayButton">Bay</button>
+    <button type="button" id="chestnutButton">Chestnut</button>
+    <button type="button" id="blackButton">Black</button>
+    <button type="button" id="grayButton">Gray</button>
 
     <h4>Rotations:</h4>
     <p>Camera Angle <input type="range" min="0" max="360" value="5" class="slider" id="angleSlide"></p>
-    <p>Yellow <input type="range" min="-45" max="45" value="0" class="slider" id="yellowSlide"></p>
-    <p>Cyan <input type="range" min="-45" max="45" value="0" class="slider" id="cyanSlide"></p>
+    <p>Upper Left Legs <input type="range" min="-45" max="45" value="0" class="slider" id="upperLeftSlide"></p>
+    <p>Lower Left Legs <input type="range" min="-45" max="0" value="0" class="slider" id="lowerLeftSlide"></p>
+    <p>Upper Right Legs <input type="range" min="-45" max="45" value="0" class="slider" id="upperRightSlide"></p>
+    <p>Lower Right Legs <input type="range" min="-45" max="0" value="0" class="slider" id="lowerRightSlide"></p>
+    <p>Animate legs <input type="checkbox" id = "legAnimBox"></p>
 
-    <p>Animation <input type="checkbox" id = "animeBox"></p>
+    <p>Neck <input type="range" min="-20" max="20" value="0" class="slider" id="neckSlide"></p>
+    <p>Head <input type="range" min="-20" max="20" value="0" class="slider" id="headSlide"></p>
+    <p>Ears <input type="range" min="145" max="180" value="150" class="slider" id="earSlide"></p>
+    <p>Animate neck <input type="checkbox" id = "neckAnimBox"></p>
+
+    <p>Tail <input type="range" min="70" max="150" value="150" class="slider" id="tailSlide"></p>
+    <p>Animate tail <input type="checkbox" id = "tailAnimBox"></p>
 
     <script src="lib/webgl-utils.js"></script>
     <script src="lib/webgl-debug.js"></script>
@@ -32,6 +42,5 @@
     <script src="Triangle.js"></script>
     <script src="Circle.js"></script>
     <script src="Cube.js"></script>
-  
-
+    <script src="Frustum.js"></script>
 </body></html>
