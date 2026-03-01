@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Cheng Assignment 4</title>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+    Please use a browser that supports "canvas"
+    </canvas>
+    <p id="performance">dummy</p>
+    <p>Normals <input type="checkbox" id = "normalBox"></p>
+    <p>Light On <input type="checkbox" id = "lightOnBox"></p>
+    <p>Spotight On <input type="checkbox" id = "spotOnBox"></p>
+    <p>
+      Light X <input type="range" min="-2000" max="2000" value="0" class="slider" id="lightXSlide">
+      Light Y <input type="range" min="0" max="2000" value="200" class="slider" id="lightYSlide">
+      Light Z <input type="range" min="-2000" max="2000" value="-200" class="slider" id="lightZSlide">
+      <br>
+      Light Animation <input type="checkbox" id = "lightMoveBox">
+      <br>
+      Spotlight X <input type="range" min="-2000" max="2000" value="0" class="slider" id="spotXSlide">
+      Spotlight Y <input type="range" min="0" max="2000" value="2000" class="slider" id="spotYSlide">
+      Spotlight Z <input type="range" min="-2000" max="2000" value="-200" class="slider" id="spotZSlide">
+      <br>
+      Spotlight Width <input type="range" min="10" max="60" value="20" class="slider" id="spotWidthSlide">
+      <br>
+      Light Red <input type="range" min="0" max="255" value="255" class="slider" id="redSlide">
+      Light Green <input type="range" min="0" max="255" value="255" class="slider" id="greenSlide">
+      Light Blue <input type="range" min="0" max="255" value="255" class="slider" id="blueSlide">
+    </p>
+
+    <p>Left-click to remove blocks, middle-click to add blocks</p>
+    <br>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="lib/cuon-matrix-cse160.js"></script>
+    <script src="asg4.js"></script>
+    <script src="Point.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Cube.js"></script>
+    <script src="Sphere.js"></script>
+    <script src="Camera.js"></script>
+    <script src="Model.js"></script>
+</body></html>
