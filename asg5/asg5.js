@@ -16,7 +16,7 @@ function main() {
 	const fov = 45;
 	const aspect = 2; // the canvas default
 	const near = 0.1;
-	const far = 150;
+	const far = 200;
 	const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 	camera.position.set(0, 10, 20);
 
@@ -64,10 +64,17 @@ function main() {
 	}
 
 	{
-
+		const loader = new THREE.TextureLoader();
 		const cubeSize = 4;
 		const cubeGeo = new THREE.BoxGeometry(cubeSize, 5, cubeSize);
-		const cubeMat = new THREE.MeshPhongMaterial({ color: '#8AC' });
+		const cubeMat = [
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan.jpg')}),
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan.jpg')}),
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan_top.jpg')}),
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan_top.jpg')}),
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan.jpg')}),
+			new THREE.MeshPhongMaterial({map: loadColorTexture('resources/images/trashcan.jpg')}),
+		];
 		const mesh = new THREE.Mesh(cubeGeo, cubeMat);
 		mesh.position.set(-30, 2.5, -2);
 		scene.add(mesh);
@@ -76,6 +83,11 @@ function main() {
 		mesh2.position.set(30, 2.5, -2);
 		scene.add(mesh2);
 
+		function loadColorTexture(path) {
+			const texture = loader.load(path);
+			texture.colorSpace = THREE.SRGBColorSpace;
+			return texture;
+		}
 	}
 
 	{
@@ -212,6 +224,7 @@ function main() {
 				root.rotation.set(0, Math.PI, 0);
 				scene.add(root);
 			});
+
 		});
 	}
 
@@ -221,7 +234,7 @@ function main() {
 		mtlLoader.load('resources/models/10450_Rectangular_Grass_Patch_v1_iterations-2.mtl', (mtl) => {
 			mtl.preload();
 			objLoader.setMaterials(mtl);
-			objLoader.load('resources/models/10450_Rectangular_Grass_Patch_v1_iterations-2.obj', (root) => {	
+			objLoader.load('resources/models/10450_Rectangular_Grass_Patch_v1_iterations-2.obj', (root) => {
 				root.translateY(-0.83);
 				root.rotation.set(-Math.PI / 2, 0, 0);
 				root.scale.set(0.5, 0.5, 0.1);
@@ -236,7 +249,7 @@ function main() {
 		mtlLoader.load('resources/models/book.mtl', (mtl) => {
 			mtl.preload();
 			objLoader.setMaterials(mtl);
-			objLoader.load('resources/models/book.obj', (root) => {	
+			objLoader.load('resources/models/book.obj', (root) => {
 				root.translateX(-25.5);
 				root.translateY(2.2);
 				root.translateZ(-22);
@@ -246,6 +259,25 @@ function main() {
 			});
 		});
 	}
+
+
+	var plane;
+	const objLoader = new OBJLoader();
+	const mtlLoader = new MTLLoader();
+	mtlLoader.load('resources/models/14082_WWII_Plane_Japan_Kawasaki_Ki-61_v1_L2.mtl', (mtl) => {
+		mtl.preload();
+		objLoader.setMaterials(mtl);
+		objLoader.load('resources/models/14082_WWII_Plane_Japan_Kawasaki_Ki-61_v1_L2.obj', (root) => {
+			plane = root;
+			plane.position.set(35, 20, 0);
+			plane.rotation.set(-Math.PI / 2, 0, Math.PI / 2);
+			plane.scale.set(3, 3, 3);
+			scene.add(plane);
+		});
+	});
+
+
+
 
 	{
 		const color = 0x404040;
@@ -343,7 +375,13 @@ function main() {
 
 	}
 
-	function render() {
+	function render(time) {
+		time *= 0.001;
+
+		if (plane != null) {
+			plane.position.set(35 * Math.cos(time), 20, 35 * Math.sin(time));
+			plane.rotation.set(-Math.PI / 2, 0, -Math.PI / 2 - time);
+		}
 
 		if (resizeRendererToDisplaySize(renderer)) {
 
